@@ -1,4 +1,4 @@
-package com.rennan.sectorspringboot.domain.service;
+package com.rennan.sectorspringboot.domain;
 
 import javax.persistence.*;
 import java.util.Date;
