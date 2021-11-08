@@ -1,4 +1,4 @@
-package com.example.sectorspringboot;
+package com.rennan.sectorspringboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

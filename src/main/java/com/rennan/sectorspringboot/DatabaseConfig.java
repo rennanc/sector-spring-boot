@@ -1,4 +1,4 @@
-package com.example.sectorspringboot;
+package com.rennan.sectorspringboot;
 
 import com.zaxxer.hikari.*;
 import org.springframework.beans.factory.annotation.Value;
