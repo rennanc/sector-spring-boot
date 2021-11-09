@@ -1,6 +1,7 @@
 package com.rennan.sectorspringboot.domain.service;
 
-import com.rennan.sectorspringboot.data.IPostgresSectorData;
+import com.rennan.sectorspringboot.data.IPostgresProfileData;
+import com.rennan.sectorspringboot.domain.Profile;
 import com.rennan.sectorspringboot.domain.Sector;
 import com.rennan.sectorspringboot.util.exception.DomainException;
 import com.rennan.sectorspringboot.util.exception.ErrorSystemType;
@@ -8,27 +9,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 
 @Component
-public class SectorSd {
+public class ProfileSd {
 
     @Autowired
-    private IPostgresSectorData postgresSectorData;
+    private IPostgresProfileData postgresProfileData;
 
-    public void create(Sector sector) throws DomainException {
+    public void create(Profile profile) throws DomainException {
 
-        if(isThereEqual(sector.getName())){
+        if(isThereEqual(profile.getName())){
             throw new DomainException(ErrorSystemType.ERROR_1);
         }
 
-        postgresSectorData.save(sector);
+        postgresProfileData.save(profile);
     }
 
     private boolean isThereEqual(String profileName){
-        return postgresSectorData.findByName(profileName) != null;
+        return postgresProfileData.findByName(profileName) != null;
     }
 
-    public List<Sector> getAll() {
-        return (List<Sector>) postgresSectorData.findAll();
+    public List<Profile> getAll() {
+        return (List<Profile>) postgresProfileData.findAll();
     }
 }

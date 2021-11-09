@@ -3,6 +3,7 @@ package com.rennan.sectorspringboot.domain;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Profile {
@@ -14,7 +15,11 @@ public class Profile {
     private Date dateAgreeToTerms;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Sector> sectorList;
+    private Set<Sector> sectorList;
+
+    public Profile() {
+        dateAgreeToTerms = new Date();
+    }
 
     public long getId() {
         return id;
@@ -40,11 +45,11 @@ public class Profile {
         this.dateAgreeToTerms = dateAgreeToTerms;
     }
 
-    public List<Sector> getSectorList() {
+    public Set<Sector> getSectorList() {
         return sectorList;
     }
 
-    public void setSectorList(List<Sector> sectorList) {
+    public void setSectorList(Set<Sector> sectorList) {
         this.sectorList = sectorList;
     }
 }
