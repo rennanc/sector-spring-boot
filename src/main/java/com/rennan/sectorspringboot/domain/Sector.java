@@ -1,5 +1,6 @@
 package com.rennan.sectorspringboot.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ public class Sector {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
+
+    @Column(unique = true)
     private long parentId;
     private String name;
 

@@ -4,16 +4,25 @@ import com.rennan.sectorspringboot.domain.Sector;
 import com.rennan.sectorspringboot.service.SectorService;
 import com.rennan.sectorspringboot.util.exception.DomainException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/sector")
 public class SectorController {
 
     @Autowired
     private SectorService sectorService;
+
+    @GetMapping("/index")
+    public String index(Model model){
+        return "sector/index";
+    }
 
     @GetMapping("/")
     @ResponseBody
@@ -23,9 +32,8 @@ public class SectorController {
 
     @PostMapping
     @ResponseBody
-    public String post(@RequestBody Sector sector) throws DomainException {
-        sector.setName("Manufacturing");
+    public ResponseEntity<String> post(@RequestBody Sector sector) throws DomainException {
         sectorService.create(sector);
-        return "ok";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
