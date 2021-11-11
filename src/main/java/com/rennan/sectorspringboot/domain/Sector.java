@@ -17,6 +17,13 @@ public class Sector {
     private long parentId;
     private String name;
 
+    public Sector() {
+    }
+
+    public Sector(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }

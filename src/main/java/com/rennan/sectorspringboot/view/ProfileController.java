@@ -13,13 +13,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/profile")
@@ -31,22 +33,28 @@ public class ProfileController extends BaseController {
     @Autowired
     private ProfileFormValidator profileFormValidator;
 
-    @GetMapping("/index")
+    @GetMapping("/create")
     public String index(Model model){
-        return "profile/index";
+        return "profile/create";
     }
 
     @GetMapping("/")
     @ResponseBody
-    public List<Profile> get(){
+    public List<Profile> getList(){
         return profileService.getAll();
+    }
+
+    @GetMapping("/getProfile/{id}")
+    @ResponseBody
+    public Optional<Profile> getProfile(@PathVariable long id){
+        return profileService.get(id);
     }
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<String> post(@RequestBody ProfileDto profile) throws DomainException, ValidationException {
+    public ResponseEntity<Profile> post(@RequestBody ProfileDto profile) throws DomainException, ValidationException {
         ValidatorUtils.validate(profile, profileFormValidator);
-        //profileService.create(profile);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Profile profileCreated = profileService.create(profile.getEntity());
+        return new ResponseEntity<Profile>(profileCreated, HttpStatus.CREATED);
     }
 }

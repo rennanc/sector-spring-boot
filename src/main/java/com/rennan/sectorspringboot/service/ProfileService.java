@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,11 +18,15 @@ public class ProfileService {
     ProfileSd profileServiceDomain;
 
     @Transactional
-    public void create(Profile profile) throws DomainException {
-        profileServiceDomain.create(profile);
+    public Profile create(Profile profile) throws DomainException {
+        return profileServiceDomain.create(profile);
     }
 
     public List<Profile> getAll() {
         return profileServiceDomain.getAll();
+    }
+
+    public Optional<Profile> get(long id) {
+        return profileServiceDomain.get(id);
     }
 }
