@@ -31,6 +31,7 @@ public class ProfileDto {
         profile.ifPresent(value -> {
             this.id = value.getId();
             this.name = value.getName();
+            this.isAgreeTerms = value.getDateAgreeToTerms() != null;
             List<Long> list = new ArrayList<>();
             for (Sector sector : profile.get().getSectorList()) {
                 Long xId = sector.getId();

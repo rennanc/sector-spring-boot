@@ -21,10 +21,13 @@ const loadData = () => {
         getFetchData(`getProfile/${id}`)
             .then((profile) => {
                 document.querySelector('#name').value = profile.name
-                document.querySelector('#sectors').options
-                    .forEach(option => {
-                        option.selected = option.value == profile.s
-                    });
+
+                document.querySelector('#agreeTerm').checked = profile.isAgreeTerms
+                
+                let options = Array.from(document.querySelectorAll('#sectors option'))
+                profile.sectorsIndexSelected?.forEach(indexSelected => {
+                    options.find(sector => sector.value == indexSelected).selected = true
+                })
             })
     }
 }
