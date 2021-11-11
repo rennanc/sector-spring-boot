@@ -2,10 +2,8 @@ package com.rennan.sectorspringboot.view.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,6 +12,7 @@ public class ProfileDto {
 
     private long id;
     private String name;
+    @JsonProperty
     private boolean isAgreeTerms;
     private List<Integer> sectorsIndexSelected;
 

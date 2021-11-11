@@ -26,9 +26,5 @@ public class ProfileFormValidator implements Validator {
         if(!profileDto.isAgreeTerms()){
             errors.reject("It's necessary agree with terms");
         }
-
-        if(errors.hasFieldErrors()) {
-            errors.reject("there are mandatory fields not filled");
-        }
     }
 }

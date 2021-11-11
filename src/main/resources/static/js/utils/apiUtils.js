@@ -23,6 +23,9 @@ export const postFetchData = (url, data) => {
 			}
 			return json
 		})
+		.catch(err => {
+			throw JSON.parse(err.message)
+		})
 }
 
 export const patchFetchData = (url, data) => {

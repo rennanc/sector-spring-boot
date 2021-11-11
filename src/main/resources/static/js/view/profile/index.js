@@ -34,15 +34,15 @@ const submitForm = (e) => {
         isAgreeTerms: document.querySelector('#agreeTerm').checked
     }
 
-     if(!validateForm()){
-         return false
-     }
+      if(!validateForm()){
+          return false
+      }
 
     postFetchData('/profile/', request)
         .then((response) => {
             showMessage('success', '#messageBlock', ALERTS_CONSTANT.TYPE.SUCCESS)
         }).catch((err) => {
-            showMessage('fail', '#messageBlock', ALERTS_CONSTANT.TYPE.ERROR)
+            showMessage(err, '#messageBlock', ALERTS_CONSTANT.TYPE.ERROR)
         })
     
 }
