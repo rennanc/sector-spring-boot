@@ -1,5 +1,7 @@
 import createSelectHierarchy from "../../modules/selectHierarchy/index.js";
 import { getFetchData, postFetchData } from "../../utils/apiUtils.js";
+import { ALERTS_CONSTANT, showMessage } from "../../utils/messageUtils.js";
+import { addErrorAtFormField, removeErrorFormField } from "../../utils/validationUtils.js";
 
 $(() => {
     addListeners();
@@ -32,11 +34,51 @@ const submitForm = (e) => {
         isAgreeTerms: document.querySelector('#agreeTerm').checked
     }
 
-    postFetchData('/profile', request)
+     if(!validateForm()){
+         return false
+     }
+
+    postFetchData('/profile/', request)
         .then((response) => {
-            console.log('ok')
+            showMessage('success', '#messageBlock', ALERTS_CONSTANT.TYPE.SUCCESS)
         }).catch((err) => {
-            console.log('fail')
+            showMessage('fail', '#messageBlock', ALERTS_CONSTANT.TYPE.ERROR)
         })
     
+}
+
+export const validateForm = () => {
+
+    jQuery.validator.setDefaults({
+        ignore: [],
+        debug: false,
+        success: "valid"
+    });
+
+    var form = $("#profileForm");
+
+    form.validate().destroy();
+
+    form.validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "sectors": {
+                required: true,
+            },
+            "agreeTerm": {
+                required: true,
+            }
+        },
+        highlight: (element) => {
+            addErrorAtFormField(element);
+        },
+        unhighlight: (element) => {
+            removeErrorFormField(element);
+        }
+    });
+    jQuery.validator.messages.required = "";
+
+    return form.valid();
 }
