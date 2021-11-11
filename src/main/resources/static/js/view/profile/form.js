@@ -1,15 +1,32 @@
 import createSelectHierarchy from "../../modules/selectHierarchy/index.js";
-import { getFetchData, postFetchData } from "../../utils/apiUtils.js";
+import { getFetchData, getUrlParam, postFetchData } from "../../utils/apiUtils.js";
 import { ALERTS_CONSTANT, showMessage } from "../../utils/messageUtils.js";
 import { addErrorAtFormField, removeErrorFormField } from "../../utils/validationUtils.js";
 
 $(() => {
     addListeners();
+    loadData();
     loadForm();
 })
 
 const loadForm = () => {
     loadSectors()
+
+    
+}
+
+const loadData = () => {
+    let id = getUrlParam('id')
+    if(id){
+        getFetchData(`getProfile/${id}`)
+            .then((profile) => {
+                document.querySelector('#name').value = profile.name
+                document.querySelector('#sectors').options
+                    .forEach(option => {
+                        option.selected = option.value == profile.s
+                    });
+            })
+    }
 }
 
 const addListeners = () => {

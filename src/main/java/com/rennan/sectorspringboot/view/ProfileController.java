@@ -11,17 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/profile")
@@ -33,12 +30,12 @@ public class ProfileController extends BaseController {
     @Autowired
     private ProfileFormValidator profileFormValidator;
 
-    @GetMapping("/create")
-    public String index(Model model){
-        return "profile/create";
+    @GetMapping("/")
+    public String index(){
+        return "profile/form";
     }
 
-    @GetMapping("/")
+    @GetMapping("/list")
     @ResponseBody
     public List<Profile> getList(){
         return profileService.getAll();
@@ -46,8 +43,8 @@ public class ProfileController extends BaseController {
 
     @GetMapping("/getProfile/{id}")
     @ResponseBody
-    public Optional<Profile> getProfile(@PathVariable long id){
-        return profileService.get(id);
+    public ProfileDto getProfile(@PathVariable long id){
+        return new ProfileDto(profileService.get(id));
     }
 
     @PostMapping

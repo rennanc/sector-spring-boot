@@ -38,3 +38,19 @@ export const patchFetchData = (url, data) => {
 			return json
 		})
 }
+
+export const getUrlParam = (param, value) => {
+    var urlparam = value;
+    if(window.location.href.indexOf(param) > -1){
+        urlparam = getUrlVars()[param];
+    }
+    return urlparam;
+}
+
+const getUrlVars = () => {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}

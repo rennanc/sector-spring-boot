@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rennan.sectorspringboot.domain.Profile;
 import com.rennan.sectorspringboot.domain.Sector;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -19,7 +21,24 @@ public class ProfileDto {
     private String name;
     @JsonProperty
     private boolean isAgreeTerms;
-    private List<Integer> sectorsIndexSelected;
+    private List<Long> sectorsIndexSelected;
+
+    public ProfileDto() {
+
+    }
+
+    public ProfileDto(Optional<Profile> profile) {
+        profile.ifPresent(value -> {
+            this.id = value.getId();
+            this.name = value.getName();
+            List<Long> list = new ArrayList<>();
+            for (Sector sector : profile.get().getSectorList()) {
+                Long xId = sector.getId();
+                list.add(xId);
+            }
+            this.sectorsIndexSelected = list;
+        });
+    }
 
     public long getId() {
         return id;
@@ -45,11 +64,11 @@ public class ProfileDto {
         isAgreeTerms = agreeTerms;
     }
 
-    public List<Integer> getSectorsIndexSelected() {
+    public List<Long> getSectorsIndexSelected() {
         return sectorsIndexSelected;
     }
 
-    public void setSectorsIndexSelected(List<Integer> sectorsIndexSelected) {
+    public void setSectorsIndexSelected(List<Long> sectorsIndexSelected) {
         this.sectorsIndexSelected = sectorsIndexSelected;
     }
 
