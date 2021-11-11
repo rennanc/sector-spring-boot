@@ -51,7 +51,7 @@ public class ProfileController extends BaseController {
     @ResponseBody
     public ResponseEntity<Profile> post(@RequestBody ProfileDto profile) throws DomainException, ValidationException {
         ValidatorUtils.validate(profile, profileFormValidator);
-        Profile profileCreated = profileService.create(profile.getEntity());
-        return new ResponseEntity<Profile>(profileCreated, HttpStatus.CREATED);
+        Profile profileSaved = profileService.save(profile.getEntity());
+        return new ResponseEntity<Profile>(profileSaved, HttpStatus.CREATED);
     }
 }

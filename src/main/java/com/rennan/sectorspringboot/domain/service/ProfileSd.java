@@ -16,9 +16,9 @@ public class ProfileSd {
     @Autowired
     private IPostgresProfileData postgresProfileData;
 
-    public Profile create(Profile profile) throws DomainException {
+    public Profile save(Profile profile) throws DomainException {
 
-        if(isThereEqual(profile.getName())){
+        if(profile.getId() == 0L && isThereEqual(profile.getName())){
             throw new DomainException(ErrorSystemType.ERROR_1);
         }
 

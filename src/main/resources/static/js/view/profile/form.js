@@ -49,6 +49,7 @@ const submitForm = (e) => {
     const sectorsIndexSelected = Array.from(sectorsSelected).map(el => el.value);
 
     const request = {
+        id: getUrlParam('id') || null,
         name : document.querySelector('#name').value,
         sectorsIndexSelected : sectorsIndexSelected,
         isAgreeTerms: document.querySelector('#agreeTerm').checked

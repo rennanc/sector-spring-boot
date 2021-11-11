@@ -18,8 +18,8 @@ public class ProfileService {
     ProfileSd profileServiceDomain;
 
     @Transactional
-    public Profile create(Profile profile) throws DomainException {
-        return profileServiceDomain.create(profile);
+    public Profile save(Profile profile) throws DomainException {
+        return profileServiceDomain.save(profile);
     }
 
     public List<Profile> getAll() {
