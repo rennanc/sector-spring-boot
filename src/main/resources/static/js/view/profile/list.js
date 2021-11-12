@@ -12,6 +12,7 @@ const loadData = () => {
                 <td>${profile.id}</td>
                 <td>${profile.name}</td>
                 <td>${profile.sectorsIndexSelected.length}</td>
+                <td><a href="/profile/?id=${profile.id}">Edit</a></td>
                 `
 
                 document.querySelector(`#profileList`)
