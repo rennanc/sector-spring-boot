@@ -1,0 +1,85 @@
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (1,'Manufacturing',0,NULL),
+	 (2,'Construction materials',1,NULL),
+	 (5,'Electronics and Optics',1,NULL),
+	 (6,'Food and Beverage',1,NULL),
+	 (7,'Bakery & confectionery products',6,NULL),
+	 (8,'Furniture',1,NULL),
+	 (9,'Bathroom/sauna',8,NULL),
+	 (10,'Other',0,NULL),
+	 (20,'Beverages',6,NULL),
+	 (21,'Fish & fish products',6,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (22,'Meat & meat products',6,NULL),
+	 (23,'Milk & dairy products',6,NULL),
+	 (24,'Sweets & snack food',6,NULL),
+	 (25,'Bedroom',8,NULL),
+	 (26,'Children''s room',8,NULL),
+	 (27,'Kitchen',8,NULL),
+	 (28,'Living room',8,NULL),
+	 (29,'Office',8,NULL),
+	 (30,'Other (Furniture)',8,NULL),
+	 (31,'Outdoor',8,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (32,'Project furniture',8,NULL),
+	 (33,'Machinery',1,NULL),
+	 (34,'Machinery components',33,NULL),
+	 (35,'Machinery equipment/tools',33,NULL),
+	 (36,'Manufacture of machinery',33,NULL),
+	 (37,'Maritime',33,NULL),
+	 (38,'Aluminium and steel workboats',37,NULL),
+	 (39,'Boat/Yacht building',37,NULL),
+	 (40,'Ship repair and conversion',37,NULL),
+	 (41,'Metal structures',33,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (42,'Repair and maintenance service',33,NULL),
+	 (43,'Metalworking',1,NULL),
+	 (44,'Construction of metal structures',41,NULL),
+	 (45,'Houses and buildings',41,NULL),
+	 (46,'Metal products',41,NULL),
+	 (47,'Metal works',41,NULL),
+	 (48,'CNC-machining',43,NULL),
+	 (49,'Forgings, Fasteners',43,NULL),
+	 (50,'Gas, Plasma, Laser cutting',43,NULL),
+	 (51,'MIG, TIG, Aluminum welding',43,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (52,'Plastic and Rubber',1,NULL),
+	 (53,'Packaging',52,NULL),
+	 (54,'Plastic goods',52,NULL),
+	 (55,'Plastic processing technology',52,NULL),
+	 (56,'Blowing',55,NULL),
+	 (57,'Moulding',55,NULL),
+	 (58,'Plastics welding and processing',55,NULL),
+	 (59,'Plastic profiles',52,NULL),
+	 (60,'Printing',1,NULL),
+	 (61,'Advertising',60,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (62,'Book/Periodicals printing',60,NULL),
+	 (63,'Labelling and packaging printing',60,NULL),
+	 (64,'Textile and Clothingg',1,NULL),
+	 (65,'Clothing',64,NULL),
+	 (66,'Textile',64,NULL),
+	 (67,'Wood',1,NULL),
+	 (68,'Other (Wood)',67,NULL),
+	 (69,'Wooden building materials',67,NULL),
+	 (70,'Wooden houses',67,NULL),
+	 (71,'Creative industries',10,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (72,'Energy technology',10,NULL),
+	 (73,'Environment',10,NULL),
+	 (74,'Service',0,NULL),
+	 (75,'Business services',74,NULL),
+	 (76,'Engineering',74,NULL),
+	 (77,'Information Technology and Telecommunications',74,NULL),
+	 (78,'Data processing, Web portals, E-marketing',77,NULL),
+	 (79,'Programming, Consultancy',77,NULL),
+	 (80,'Software, Hardware',77,NULL),
+	 (81,'Telecommunications',77,NULL);
+INSERT INTO public.sector (id,"name",parent_id,parent_sector_id) VALUES
+	 (82,'Tourism',74,NULL),
+	 (83,'Translation services',74,NULL),
+	 (84,'Transport and Logistics',74,NULL),
+	 (85,'Air',84,NULL),
+	 (86,'Rail',84,NULL),
+	 (87,'Road',84,NULL),
+	 (88,'Water',84,NULL);
