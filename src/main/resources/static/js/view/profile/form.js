@@ -61,7 +61,7 @@ const submitForm = (e) => {
 
     postFetchData('/profile/', request)
         .then((response) => {
-            showMessage('Profile created with success.', '#messageBlock', ALERTS_CONSTANT.TYPE.SUCCESS)
+            showMessage('Profile saved with success.', '#messageBlock', ALERTS_CONSTANT.TYPE.SUCCESS)
         }).catch((err) => {
             showMessage(err, '#messageBlock', ALERTS_CONSTANT.TYPE.ERROR)
         })
