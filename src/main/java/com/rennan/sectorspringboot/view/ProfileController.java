@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/profile")
@@ -36,9 +38,16 @@ public class ProfileController extends BaseController {
     }
 
     @GetMapping("/list")
+    public String getList(){
+        return "profile/list";
+    }
+
+    @GetMapping("/getProfiles")
     @ResponseBody
-    public List<Profile> getList(){
-        return profileService.getAll();
+    public List<ProfileDto> getProfiles(){
+        List<ProfileDto> profileDtos = new ArrayList<>();
+        profileService.getAll().forEach(x -> profileDtos.add(new ProfileDto(java.util.Optional.ofNullable(x))));
+        return profileDtos;
     }
 
     @GetMapping("/getProfile/{id}")
