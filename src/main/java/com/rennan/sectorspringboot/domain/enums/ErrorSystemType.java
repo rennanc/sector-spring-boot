@@ -1,4 +1,4 @@
-package com.rennan.sectorspringboot.util.exception;
+package com.rennan.sectorspringboot.domain.enums;
 
 public enum ErrorSystemType {
 

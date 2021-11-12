@@ -1,5 +1,6 @@
 package com.rennan.sectorspringboot.view;
 
+import com.rennan.sectorspringboot.util.exception.DomainException;
 import com.rennan.sectorspringboot.util.exception.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,25 @@ import java.util.List;
 public class BaseController {
 
     /**
+     * method responsible from transform domain exception to http body response
+     *
+     * @param e {@link DomainException}
+     * @return {@link ResponseEntity<String>}
+     */
+    @ExceptionHandler(DomainException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ResponseEntity<List<String>> handleDomainException(final DomainException e) {
+        List<String> messages = new ArrayList<>();
+        messages.add(e.getErrorType().getDescription());
+        return new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
+    }
+
+    /**
      * method responsible from transform validation exception to http body response
      *
      * @param e {@link ValidationException}
-     * @return {@link ResponseEntity<String>}
+     * @return {@link ResponseEntity<List<String>>}
      */
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

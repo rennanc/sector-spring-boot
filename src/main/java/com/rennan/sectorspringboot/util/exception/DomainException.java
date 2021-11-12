@@ -1,5 +1,7 @@
 package com.rennan.sectorspringboot.util.exception;
 
+import com.rennan.sectorspringboot.domain.enums.ErrorSystemType;
+
 public class DomainException extends Exception {
 
     private ErrorSystemType errorType;

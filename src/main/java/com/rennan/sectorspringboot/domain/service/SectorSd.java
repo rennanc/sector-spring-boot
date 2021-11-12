@@ -3,7 +3,7 @@ package com.rennan.sectorspringboot.domain.service;
 import com.rennan.sectorspringboot.data.IPostgresSectorData;
 import com.rennan.sectorspringboot.domain.Sector;
 import com.rennan.sectorspringboot.util.exception.DomainException;
-import com.rennan.sectorspringboot.util.exception.ErrorSystemType;
+import com.rennan.sectorspringboot.domain.enums.ErrorSystemType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
